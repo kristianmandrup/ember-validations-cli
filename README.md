@@ -1,13 +1,10 @@
 # Ember Validations for Ember CLI #
 
-Experimental fork to allow Ember Validations to be used as an Ember CLI addon (until the original master branch adds this feature).
+Ember Validations for Ember CLI addon (until the original master branch adds this feature).
 
 Can be used with [ember-easyform-cli](https://github.com/kristianmandrup/ember-easyform-cli)
 
 The distributions available: 
-
-`/distributionsember-validations-cli-es6.js/` - ES6 module (`export default`)
-`distributions/ember-validations-cli.js` - "Browserified" distribution from AMD (RequireJS) modules.
 
 The `index.js` file for the addon:
 
@@ -16,14 +13,18 @@ module.exports = {
   name: 'ember-validations-cli',
   included: function(app) {
     this._super.included(app);
-    this.app.import('distributions/ember-validations-cli.js');
+    this.app.import(app.bowerDirectory + '/ember-validations/dist/ember-validations.js');
   }
 };
 ```
 
-Note: Possibly the following approach would be better?
+The addon will be detected by ember-cli (via Broccoli?) when building the project, since the `package.json` has the keyword `"ember-addon"`. Broccoli will then run the addon main file: `index.js` which will decorate the app with an import to include the javascript file found in the bower components directory of the app. Thus it requires that an [ember-validations](https://github.com/kristianmandrup/ember-validations) distribution is present there as `/ember-validations/dist/ember-validations.js`.
 
-[simple-auth index.js](https://github.com/simplabs/ember-cli-simple-auth/blob/master/index.js)
+Then Broccoli will add the `ember-validations.js` script to the `vendor.js` bundle which is generated and loaded in `index.html`.
+
+Sweet :)
+
+Please help improve this installation process, by automatically installing the bower "dependency" and perhaps registering the library with Ember. I'm still learning the ropes here...
 
 ## Installation
 
@@ -38,12 +39,6 @@ And run `npm install`
 Later this year... (hopefully) :
 
 `npm install ember-validations-cli --save-dev`
-
-PS: Still haven't tested this in a real Ember CLI app, so please help out!
-
-## Getting a build ##
-
-[Please choose from our list of builds for Ember-Validations](http://builds.dockyard.com)
 
 ## Building yourself ##
 
