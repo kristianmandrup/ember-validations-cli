@@ -4,8 +4,6 @@ Ember Validations for Ember CLI addon (until the original master branch adds thi
 
 Can be used with [ember-easyform-cli](https://github.com/kristianmandrup/ember-easyform-cli)
 
-The distributions available: 
-
 The `index.js` file for the addon:
 
 ```javascript
@@ -18,17 +16,44 @@ module.exports = {
 };
 ```
 
-The addon will be detected by ember-cli (via Broccoli?) when building the project, since the `package.json` has the keyword `"ember-addon"`. Broccoli will then run the addon main file: `index.js` which will decorate the app with an import to include the javascript file found in the bower components directory of the app. Thus it requires that an [ember-validations](https://github.com/kristianmandrup/ember-validations) distribution is present there as `/ember-validations/dist/ember-validations.js`.
+The addon will be detected by ember-cli when building the project, since the `package.json` has the keyword `"ember-addon"`. Broccoli will then run the addon main file: `index.js` which will decorate the app with an import to include the javascript file found in the bower components directory of the app. Thus it requires that an [ember-validations](https://github.com/kristianmandrup/ember-validations) distribution is present there as `/ember-validations/dist/ember-validations.js`.
 
 Then Broccoli will add the `ember-validations.js` script to the `vendor.js` bundle which is generated and loaded in `index.html`.
 
 Sweet :)
 
-Please help improve this installation process, by automatically installing the bower "dependency" and perhaps registering the library with Ember. I'm still learning the ropes here...
-
 ## Installation
 
-For now in your Ember CLI app `packages.json` file, add: 
+Since the `package.json` file now has an install script defined, it will auto-install its bower dependencies!!
+
+```js
+"scripts": {
+  "install": "bower install"
+```
+
+If this for some reason doesn't work or you want to install manually:
+
+Try `bower install kristianmandrup/ember-easyform.git#master --save-dev`
+
+Which should install `ember-easyform` bower distribution and save it into your `bower.json` file.
+
+Or alternatively...
+
+Install [bower distribution](git://github.com/kristianmandrup/ember-validations.git). In your `bower.json` file insert this entry for `"devDependencies"`:
+
+```json
+{
+  "devDependencies": {
+    // others ...
+    "ember-easyform": "git://github.com/kristianmandrup/ember-easyform.git#master"
+  }
+}
+```
+
+Run `bower install`
+
+
+In your Ember CLI app `packages.json` file, add this `"devDependency"`: 
 
 ```json
   "ember-validations-cli": "git://github.com/kristianmandrup/ember-validations-cli.git#master"
@@ -36,9 +61,17 @@ For now in your Ember CLI app `packages.json` file, add:
 
 And run `npm install`
 
-Later this year... (hopefully) :
+*Test in the browser*
 
-`npm install ember-validations-cli --save-dev`
+ `$ open localhost:4200`
+
+In the console of Chrome web tools:
+
+```bash
+> Ember.Validations.VERSION
+// => prints version number ("1.0.0")
+```
+
 
 ## Building yourself ##
 
