@@ -48,7 +48,7 @@ This should install the dependencies listed in the `bower.json` file of this add
 ```js
 {
   "name": "bower-dummy",
-  "dependencies": {
+  "devDependencies": {
     "ember-validations": "kristianmandrup/ember-validations.git#master",
   }
 }
@@ -75,17 +75,27 @@ Install [bower distribution](git://github.com/kristianmandrup/ember-validations.
 
 Run `bower install`
 
+### Test if installation works
+
+Run `ember serve`
+
+While Broccoli build the project it will pick up the addon *ember-validations-cli* in the `node_modules/` folder by identifying it with the `package.json` keyword: `ember-addon`. 
+
+ Ember CLI (via Broccoli) will load the main addon file `index.js` which adds an `app.import` to the Broccoli build process, which picks up the 
+ installed bower component [ember-validations](git://github.com/kristianmandrup/ember-validations.git) to make it part of the application build.
+
 *Test in the browser*
+
+ Now you can serve the final build (the library will be part of `vendor.js`).
 
  `$ open localhost:4200`
 
-In the console of Chrome web tools:
+In the console of your browser web tools:
 
 ```bash
 > Ember.Validations.VERSION
 // => prints version number ("1.0.0")
 ```
-
 
 ## Building yourself ##
 
