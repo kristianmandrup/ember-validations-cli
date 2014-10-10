@@ -24,7 +24,19 @@ Sweet :)
 
 ## Installation
 
-Since the `package.json` file now has an install script defined, it will auto-install its bower dependencies!!
+In your Ember CLI app `packages.json` file, add this `"devDependency"`: 
+
+```json
+  "ember-validations-cli": "git://github.com/kristianmandrup/ember-validations-cli.git#master"
+```
+
+And run `npm install`
+
+### Bower library installation
+
+The addon depends on `ember-validations` being installed as a bower component.
+
+Since the `package.json` file now has an "install" script defined, it should auto-install its bower dependencies!!
 
 ```js
 "scripts": {
@@ -32,6 +44,15 @@ Since the `package.json` file now has an install script defined, it will auto-in
 ```
 
 This should install the dependencies listed in the `bower.json` file of this addon (named `"dummy"` for this reason!)
+
+```js
+{
+  "name": "bower-dummy",
+  "dependencies": {
+    "ember-validations": "kristianmandrup/ember-validations.git#master",
+  }
+}
+```
 
 If this for some reason doesn't work or you want to install manually:
 
@@ -53,15 +74,6 @@ Install [bower distribution](git://github.com/kristianmandrup/ember-validations.
 ```
 
 Run `bower install`
-
-
-In your Ember CLI app `packages.json` file, add this `"devDependency"`: 
-
-```json
-  "ember-validations-cli": "git://github.com/kristianmandrup/ember-validations-cli.git#master"
-```
-
-And run `npm install`
 
 *Test in the browser*
 
