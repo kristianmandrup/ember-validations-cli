@@ -31,6 +31,8 @@ Since the `package.json` file now has an install script defined, it will auto-in
   "install": "bower install"
 ```
 
+This should install the dependencies listed in the `bower.json` file of this addon (named `"dummy"` for this reason!)
+
 If this for some reason doesn't work or you want to install manually:
 
 Try `bower install kristianmandrup/ember-easyform.git#master --save-dev`

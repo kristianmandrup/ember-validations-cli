@@ -1,0 +1,6 @@
+{
+  "name": "dummy",
+  "dependencies": {
+    "ember-validations": "kristianmandrup/ember-validations.git#master",
+  }
+}
