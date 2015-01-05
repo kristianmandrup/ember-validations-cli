@@ -1,6 +1,6 @@
 {
   "name": "bower-dummy",
   "devDependencies": {
-    "ember-validations": "kristianmandrup/ember-validations.git#master"
+    "ember-validations": "kristianmandrup/ember-validations#master"
   }
 }
