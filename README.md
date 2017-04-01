@@ -1,5 +1,7 @@
 # Ember Validations for Ember CLI #
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kristianmandrup/ember-validations-cli.svg)](https://greenkeeper.io/)
+
 Ember Validations for Ember CLI addon (until the original master branch adds this feature).
 
 Can be used with [ember-easyform-cli](https://github.com/kristianmandrup/ember-easyform-cli)
